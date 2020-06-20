@@ -1,0 +1,15 @@
+\documentclass[margin=2mm]{standalone}
+
+\usepackage{tikz}
+
+\newcommand{\snip}[3][(0,0)]{
+  \draw #1 rectangle ++(#2,#3)
+}
+
+\begin{document}
+\begin{tikzpicture}
+\snip 2 3;
+\snip 1 2;
+\snip[(3,1)] 1 {.5};
+\end{tikzpicture}
+\end{document}
