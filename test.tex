@@ -1,15 +1,18 @@
 \documentclass[margin=2mm]{standalone}
 
 \usepackage{tikz}
-
+\usetikzlibrary{calc}
 \newcommand{\snip}[3][(0,0)]{
-  \draw #1 rectangle ++(#2,#3)
+  \draw[white] #1 -| ++(#2,#3) coordinate[pos=.9] (A)
+                        coordinate[pos=.6] (B);
+  \draw[white] #1 |- ++(#2,#3)
 }
 
 \begin{document}
+A
 \begin{tikzpicture}
 \snip 2 3;
-\snip 1 2;
-\snip[(3,1)] 1 {.5};
+\draw[rounded corners=22.5] (A) -- ($(A) - (1,0)$) |- (B);
 \end{tikzpicture}
+B
 \end{document}
