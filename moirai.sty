@@ -1,0 +1,261 @@
+% moirai.sty
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+%=======================================================================
+% Preliminary commands
+
+\def\l{0.25}
+
+\tikzset{ 
+    wire/.style={rounded corners=5, line width=.5pt}
+	, iden/.style={line width=.5pt}
+  , dot/.style={draw,fill=black, circle, inner sep=1pt} 
+    % black dot is default
+  , wdot/.style={draw,fill=white, circle, inner sep=1pt} 
+    % white dot is already there
+  , cdot/.style={draw,fill=#1, circle, inner sep=1pt}
+    % choose your fav colour
+	, box/.style={pos=.5,font=\tiny}
+}
+
+\usepackage{xparse}
+
+\NewDocumentCommand{\ezs}{o m}{
+  \IfNoValueTF{#1}
+    {\begin{scope} #2 \end{scope}}
+    {\begin{scope}[#1] #2 \end{scope}}
+}
+\newcommand{\step}[2][1]{\ezs[xshift=#1 cm]{#2}}
+
+\newcommand{\up}[2][1]{
+    {\ezs[yshift=#1 cm]{#2}}
+}
+\newcommand{\down}[2][-1]{
+    {\ezs[yshift=#1 cm]{#2}}
+}
+
+\newcommand{\lLabel}[2][0]{\node[left] at (#1,2*\l) {$#2 =\quad$};}
+\newcommand{\rLabel}[2]{\node[right] at (#2,2*\l) {$\quad = #1$};}
+
+%=======================================================================
+% Basic shapes
+
+% Akasha (Sanskrit आकाश) is a term for the empty space or æther pervading 
+% the cosmos.
+\def\akasa{
+	\draw[densely dotted] (0,0) rectangle (4*\l,4*\l);
+}
+
+\def\braid{
+	\draw[wire] (0,\l) -- (\l,\l) -- (3*\l, 3*\l) -- (4*\l,3*\l);
+	\draw[wire] (0,3*\l) -- (\l,3*\l) -- (3*\l, \l) -- (4*\l,\l);
+}
+
+\def\id{
+	\draw[iden] (0,2*\l) -- (4*\l,2*\l);
+}
+
+\def\twoid{
+	\draw[iden] (0,\l) -- (4*\l,\l);
+	\draw[iden] (0,3*\l) -- (4*\l,3*\l);
+}
+
+\newcommand{\twoAr}[2][white]{ % two to one arrow == h : A ⊗ B -> C
+	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
+	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
+	\draw[fill=#1]
+	(\l,\l-.1) rectangle (3*\l,3*\l+.1) node[box] {$#2$};
+}
+
+\newcommand{\arTwo}[2][white]{ % one to two arrow == k : A -> B ⊗ C
+	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
+	\draw[wire] (2*\l,2*\l) -- (0,2*\l);
+	\draw[fill=#1]
+	(\l,\l-.1) rectangle (3*\l,3*\l+.1) node[box] {$#2$};
+}
+
+% Not sure if I need these..
+
+\def\turn{
+	\draw[wire] (0,\l) -- (\l,\l) -- (3*\l, 3*\l) -- (4*\l,3*\l);
+}
+\def\coturn{
+	\draw[wire] (0,3*\l) -- (\l,3*\l) -- (3*\l, \l) -- (4*\l,\l);
+}
+
+% == monoid structure
+% the standard structure is black, but an optional parameter allows for 
+% different colours.
+
+\newcommand{\mult}[1][black]{
+	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
+	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
+	\node[cdot=#1] at (2*\l,2*\l) {};
+}
+
+\newcommand{\unit}[1][black]{
+	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
+	\node[cdot=#1] at (2*\l,2*\l) {};
+}
+
+\newcommand{\Tcounit}[2][white]{ % "tagged" counit
+	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\draw[wire] (0,2*\l) -- ++(2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,2*\l) {\tiny $#2$};
+}
+
+\newcommand{\mor}[2][white]{
+	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\id\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,2*\l) {\tiny $#2$};
+}
+
+% == comonoid structure
+
+\newcommand{\comult}[1][black]{
+	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
+	\draw[wire] (2*\l,2*\l) -- (0,2*\l);
+	\node[cdot=#1] at (2*\l,2*\l) {};
+}
+
+\newcommand{\counit}[1][black]{
+	\draw[wire] (0,2*\l) -- (2*\l,2*\l);
+	\node[cdot=#1] at (2*\l,2*\l) {};
+}
+
+\newcommand{\Tunit}[2][white]{ % "tagged" unit
+	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\draw[wire] (2*\l,2*\l) -- ++(2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,2*\l) {\tiny $#2$};
+}
+
+%=======================================================================
+% Upper and lower variants
+% U = Up -- D = Down
+% L = Labeled
+
+\def\Did{ % identity, down
+	\draw[iden] (0,\l) -- (4*\l,\l);
+}
+
+\def\Uid{ % identity, up
+	\draw[iden] (0,3*\l) -- (4*\l,3*\l);
+}
+
+\newcommand{\Dmor}[2][white]{ % down morphism
+	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\Did
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,\l) {\tiny $#2$};
+}
+\newcommand{\Umor}[2][white]{ % up morphism
+	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\Uid
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,3*\l) {\tiny $#2$};
+}
+
+\newcommand{\Dcomult}[1][black]{ % comultiplication, down
+	\draw[wire] (4*\l,0) -| (2*\l,2*\l) -- (4*\l,2*\l);
+	\draw[wire] (2*\l,\l) -- (0,\l);
+	\node[cdot=#1] at (2*\l,\l) {};
+}
+
+\newcommand{\Ucomult}[1][black]{ % comultiplication, up
+	\draw[wire] (4*\l,2*\l) -| (2*\l,4*\l) -- (4*\l,4*\l);
+	\draw[wire] (2*\l,3*\l) -- (0,3*\l);
+	\node[cdot=#1] at (2*\l,3*\l) {};
+}
+
+\newcommand{\Uunit}[1][black]{
+	\draw[wire] (4*\l,3*\l) -- (2*\l,3*\l);
+	\node[cdot=#1] at (2*\l,3*\l) {};
+}
+
+\newcommand{\Dunit}[1][black]{
+	\draw[wire] (4*\l,\l) -- (2*\l,\l);
+	\node[cdot=#1] at (2*\l,\l) {};
+}
+
+\newcommand{\Ucounit}[1][black]{
+	\draw[wire] (0,3*\l) -- (2*\l,3*\l);
+	\node[cdot=#1] at (2*\l,3*\l) {};
+}
+
+\newcommand{\Dcounit}[1][black]{
+	\draw[wire] (0,\l) -- (2*\l,\l);
+	\node[cdot=#1] at (2*\l,\l) {};
+}
+
+\newcommand{\DTunit}[2][white]{ % tagged counit, down
+	\draw[wire] (2*\l,\l) -- ++(2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,\l) {\tiny $#2$};
+}
+
+\newcommand{\UTunit}[2][white]{ % tagged counit, up
+	\draw[wire] (2*\l,3*\l) -- ++(2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,3*\l) {\tiny $#2$};
+}
+
+\newcommand{\DTcounit}[2][white]{ % tagged counit, down
+	\draw[wire] (2*\l,\l) -- ++(-2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,\l) {\tiny $#2$};
+}
+
+\newcommand{\UTcounit}[2][white]{ % tagged counit, up
+	\draw[wire] (2*\l,3*\l) -- ++(-2*\l,0);
+	\node[draw, fill=#1, inner sep=1.5pt] at (2*\l,3*\l) {\tiny $#2$};
+}
+
+%=======================================================================
+% Other strings
+
+\newcommand{\Cup}{
+	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
+}
+
+\newcommand{\Cap}{
+	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
+}
+
+\newcommand{\DCup}{
+	\draw[wire] (0,0) -| (2*\l,2*\l) -- (0,2*\l);
+}
+
+\newcommand{\DCap}{
+	\draw[wire] (4*\l,0) -| (2*\l,2*\l) -- (4*\l,2*\l);
+}
+
+\newcommand{\TCup}{
+	\draw[wire] (0,2*\l) -| (2*\l,4*\l) -- (0,4*\l);
+}
+
+\newcommand{\TCap}{
+	\draw[wire] (4*\l,2*\l) -| (2*\l,4*\l) -- (4*\l,4*\l);
+}
+
+%=======================================================================
+% The canvas
+
+%  ------------------+------------------+------------------+------------------ 
+% ||                                                                          ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% || ---------------TL------------------T-----------------TR----------------- ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% || ---------------CL------------------C-----------------CR----------------- ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% || ---------------DL------------------D-----------------DR----------------- ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                 |                  |                  |                  ||
+% ||                                                                          ||
+%   -----------------+------------------+------------------+------------------ 
+
+%=======================================================================
