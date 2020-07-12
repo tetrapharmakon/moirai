@@ -6,8 +6,17 @@
 %=======================================================================
 % Preliminary commands
 
-
 \def\l{0.25}
+
+\def\LT{(\l,3*\l)}
+\def\T{(2*\l,3*\l)}
+\def\RT{(3*\l,3*\l)}
+\def\LC{(\l,2*\l)}
+\def\C{(2*\l,2*\l)}
+\def\RC{(3*\l,2*\l)}
+\def\LD{(\l,\l)}
+\def\D{(2*\l,\l)}
+\def\RD{(3*\l,\l)}
 
 \tikzset{ 
     wire/.style={rounded corners=3, line width=.5pt}
@@ -169,10 +178,16 @@
 	\Did
 	\node[tag, fill=#1] at (2*\l,\l) {\tiny $#2$};
 }
+
 \newcommand{\Umor}[2][white]{ % up morphism
 	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
 	\Uid
 	\node[tag, fill=#1] at (2*\l,3*\l) {\tiny $#2$};
+}
+
+\NewDocumentCommand{\UDmor}{O{white} m O{white} m}{ % up n down morphism
+\Umor[#1]{#2}
+\Dmor[#3]{#4}
 }
 
 \newcommand{\Dcomult}[1][black]{ % comultiplication, down
@@ -187,22 +202,22 @@
 	\node[cdot=#1] at (2*\l,3*\l) {};
 }
 
-\newcommand{\Uunit}[1][black]{
+\newcommand{\Uunit}[1][black]{ % unit, up
 	\draw[wire] (4*\l,3*\l) -- (2*\l,3*\l);
 	\node[cdot=#1] at (2*\l,3*\l) {};
 }
 
-\newcommand{\Dunit}[1][black]{
+\newcommand{\Dunit}[1][black]{ % unit, down
 	\draw[wire] (4*\l,\l) -- (2*\l,\l);
 	\node[cdot=#1] at (2*\l,\l) {};
 }
 
-\newcommand{\Ucounit}[1][black]{
+\newcommand{\Ucounit}[1][black]{ % counit, up
 	\draw[wire] (0,3*\l) -- (2*\l,3*\l);
 	\node[cdot=#1] at (2*\l,3*\l) {};
 }
 
-\newcommand{\Dcounit}[1][black]{
+\newcommand{\Dcounit}[1][black]{ % counit, down
 	\draw[wire] (0,\l) -- (2*\l,\l);
 	\node[cdot=#1] at (2*\l,\l) {};
 }
@@ -282,25 +297,7 @@
 %=======================================================================
 % Things to reorder
 
-% \newcommand{\leftLabel}[2][0]{\node[left] at (#1,2*\l) {$#2 =\quad$};}
-% \newcommand{\rightLabel}[2]{\node[right] at (#2,2*\l) {$\quad = #1$};}
 
-
-% \def\umult{
-% \ezs{
-% \draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
-% \draw[wire] (2*\l,2*\l) -- (1,2*\l);
-% \node[dot] at (2*\l,2*\l) {};
-% }{yshift=\l cm}
-% }
-
-% \def\lmult{
-% \ezs{
-% \draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
-% \draw[wire] (2*\l,2*\l) -- (1,2*\l);
-% \node[dot] at (2*\l,2*\l) {};
-% }{yshift=-\l cm}
-% }
 % \def\multi#1{
 % % \foreach \i in {0,1,2,3}{
 % % \draw[wire] (0,\l/2+\i*\l) -- ++(\l,0);}
@@ -308,24 +305,6 @@
 % \draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
 % \ezs{\draw[wire] (3*\l,2*\l) -- ++(\l,0);
 % \draw[fill=white, thin] (\l,\l-.15) rectangle (3*\l,3*\l+.15) node[pos=.5,] {$\scriptscriptstyle #1$};}{yscale=2}
-% }
-
-% \newcommand{\tmor}[3]{
-% \mor{#1}
-% \node[left] at (0,2*\l) {\tiny $#2$};
-% \node[right] at (1,2*\l) {\tiny $#3$};
-% }
-
-% \newcommand{\gau}[1]{
-% \node[left] at (0,2*\l) {\tiny $#1$};
-% }
-
-% \newcommand{\dro}[1]{
-% \node[right] at (1,2*\l) {\tiny $#1$};
-% }
-
-% \newcommand{\eql}[1]{
-% \node at (#1,2*\l) {$=$};
 % }
 
 % \def\theR{\ucounit

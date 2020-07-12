@@ -11,6 +11,8 @@
 *.cb
 *.cb2
 .*.lb
+doc-moirai.*
+test.*
 
 ## Intermediate documents:
 *.dvi
