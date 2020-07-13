@@ -192,6 +192,12 @@
 \Dmor[#3]{#4}
 }
 
+\newcommand{\DDmor}[2][white]{
+	\Uid\Dmor[#1]{#2}
+}
+\newcommand{\UUmor}[2][white]{
+	\Did\Umor[#1]{#2}
+}
 \newcommand{\Dcomult}[1][black]{ % comultiplication, down
 	\draw[wire] (4*\l,0) -| (2*\l,2*\l) -- (4*\l,2*\l);
 	\draw[wire] (2*\l,\l) -- (0,\l);
