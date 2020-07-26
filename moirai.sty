@@ -6,17 +6,17 @@
 %=======================================================================
 % Preliminary commands
 
-\def\l{0.25}
+\def\nlen{0.25}
 
-\def\LT{(\l,3*\l)}
-\def\T{(2*\l,3*\l)}
-\def\RT{(3*\l,3*\l)}
-\def\LC{(\l,2*\l)}
-\def\C{(2*\l,2*\l)}
-\def\RC{(3*\l,2*\l)}
-\def\LD{(\l,\l)}
-\def\D{(2*\l,\l)}
-\def\RD{(3*\l,\l)}
+\def\LT{(\nlen,3*\nlen)}
+\def\T{(2*\nlen,3*\nlen)}
+\def\RT{(3*\nlen,3*\nlen)}
+\def\LC{(\nlen,2*\nlen)}
+\def\C{(2*\nlen,2*\nlen)}
+\def\RC{(3*\nlen,2*\nlen)}
+\def\LD{(\nlen,\nlen)}
+\def\D{(2*\nlen,\nlen)}
+\def\RD{(3*\nlen,\nlen)}
 
 \tikzset{ 
     wire/.style={rounded corners=3, line width=.5pt}
@@ -42,26 +42,26 @@
 \newcommand{\unstep}[2][-1]{\ezs[xshift=#1 cm]{#2}}
 
 \newcommand{\up}[2][1]{
-    {\ezs[yshift=#1*\l cm]{#2}}
+    {\ezs[yshift=#1*\nlen cm]{#2}}
 }
 
 \newcommand{\down}[2][1]{
-    {\ezs[yshift=-#1*\l cm]{#2}}
+    {\ezs[yshift=-#1*\nlen cm]{#2}}
 }
 
-\newcommand{\lLabel}[2][0]{\node[left] at (#1,2*\l) {$#2 =\quad$};}
-\newcommand{\rLabel}[2]{\node[right] at (#2,2*\l) {$\quad = #1$};}
+\newcommand{\nlenLabel}[2][0]{\node[left] at (#1,2*\nlen) {$#2 =\quad$};}
+\newcommand{\rLabel}[2]{\node[right] at (#2,2*\nlen) {$\quad = #1$};}
 
 \newcommand{\gau}[1]{ % à gauche
-\node[left] at (0,2*\l) {\tiny $#1$};
+\node[left] at (0,2*\nlen) {\tiny $#1$};
 }
 
 \newcommand{\dro}[1]{ % à droite
-\node[right] at (1,2*\l) {\tiny $#1$};
+\node[right] at (1,2*\nlen) {\tiny $#1$};
 }
 
 \newcommand{\eql}[1]{ % egalité
-\node at (#1,2*\l) {$=$};
+\node at (#1,2*\nlen) {$=$};
 }
 
 \newcommand{\yScale}[2][2]{
@@ -78,44 +78,44 @@
 % Akasa (Sanskrit आकाश) is a term for the empty space or æther pervading 
 % the cosmos.
 \def\akasa{
-	\draw[densely dotted] (0,0) rectangle (4*\l,4*\l);
+	\draw[densely dotted] (0,0) rectangle (4*\nlen,4*\nlen);
 }
 
 \def\braid{
-	\draw[wire] (0,\l) -- (\l,\l) -- (3*\l, 3*\l) -- (4*\l,3*\l);
-	\draw[wire] (0,3*\l) -- (\l,3*\l) -- (3*\l, \l) -- (4*\l,\l);
+	\draw[wire] (0,\nlen) -- (\nlen,\nlen) -- (3*\nlen, 3*\nlen) -- (4*\nlen,3*\nlen);
+	\draw[wire] (0,3*\nlen) -- (\nlen,3*\nlen) -- (3*\nlen, \nlen) -- (4*\nlen,\nlen);
 }
 
-\def\id{
-	\draw[iden] (0,2*\l) -- (4*\l,2*\l);
+\def\idn{
+	\draw[iden] (0,2*\nlen) -- (4*\nlen,2*\nlen);
 }
 
 \def\twoid{
-	\draw[iden] (0,\l) -- (4*\l,\l);
-	\draw[iden] (0,3*\l) -- (4*\l,3*\l);
+	\draw[iden] (0,\nlen) -- (4*\nlen,\nlen);
+	\draw[iden] (0,3*\nlen) -- (4*\nlen,3*\nlen);
 }
 
 \newcommand{\twoAr}[2][white]{ % two to one arrow == h : A ⊗ B -> C
-	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
-	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
+	\draw[wire] (0,\nlen) -| (2*\nlen,3*\nlen) -- (0,3*\nlen);
+	\draw[wire] (2*\nlen,2*\nlen) -- (4*\nlen,2*\nlen);
 	\draw[fill=#1]
-	(\l,\l-.1) rectangle (3*\l,3*\l+.1) node[box] {$#2$};
+	(\nlen,\nlen-.1) rectangle (3*\nlen,3*\nlen+.1) node[box] {$#2$};
 }
 
 \newcommand{\arTwo}[2][white]{ % one to two arrow == k : A -> B ⊗ C
-	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
-	\draw[wire] (2*\l,2*\l) -- (0,2*\l);
+	\draw[wire] (4*\nlen,\nlen) -| (2*\nlen,3*\nlen) -- (4*\nlen,3*\nlen);
+	\draw[wire] (2*\nlen,2*\nlen) -- (0,2*\nlen);
 	\draw[fill=#1]
-	(\l,\l-.1) rectangle (3*\l,3*\l+.1) node[box] {$#2$};
+	(\nlen,\nlen-.1) rectangle (3*\nlen,3*\nlen+.1) node[box] {$#2$};
 }
 
 % Not sure if I need these..
 
 \def\turn{
-	\draw[wire] (0,\l) -- (\l,\l) -- (3*\l, 3*\l) -- (4*\l,3*\l);
+	\draw[wire] (0,\nlen) -- (\nlen,\nlen) -- (3*\nlen, 3*\nlen) -- (4*\nlen,3*\nlen);
 }
 \def\coturn{
-	\draw[wire] (0,3*\l) -- (\l,3*\l) -- (3*\l, \l) -- (4*\l,\l);
+	\draw[wire] (0,3*\nlen) -- (\nlen,3*\nlen) -- (3*\nlen, \nlen) -- (4*\nlen,\nlen);
 }
 
 % == monoid structure
@@ -123,44 +123,44 @@
 % different colours.
 
 \newcommand{\mult}[1][black]{
-	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
-	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
-	\node[cdot=#1] at (2*\l,2*\l) {};
+	\draw[wire] (0,\nlen) -| (2*\nlen,3*\nlen) -- (0,3*\nlen);
+	\draw[wire] (2*\nlen,2*\nlen) -- (4*\nlen,2*\nlen);
+	\node[cdot=#1] at (2*\nlen,2*\nlen) {};
 }
 
 \newcommand{\unit}[1][black]{
-	\draw[wire] (2*\l,2*\l) -- (4*\l,2*\l);
-	\node[cdot=#1] at (2*\l,2*\l) {};
+	\draw[wire] (2*\nlen,2*\nlen) -- (4*\nlen,2*\nlen);
+	\node[cdot=#1] at (2*\nlen,2*\nlen) {};
 }
 
 \newcommand{\Tcounit}[2][white]{ % "tagged" counit
-	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
-	\draw[wire] (0,2*\l) -- ++(2*\l,0);
-	\node[tag, fill=#1] at (2*\l,2*\l) {\tiny $#2$};
+	\draw[draw=none] (0,0) rectangle (4*\nlen,4*\nlen);
+	\draw[wire] (0,2*\nlen) -- ++(2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,2*\nlen) {\tiny $#2$};
 }
 
 \newcommand{\mor}[2][white]{
-	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
-	\id\node[tag, fill=#1] at (2*\l,2*\l) {\tiny $#2$};
+	\draw[draw=none] (0,0) rectangle (4*\nlen,4*\nlen);
+	\idn\node[tag, fill=#1] at (2*\nlen,2*\nlen) {\tiny $#2$};
 }
 
 % == comonoid structure
 
 \newcommand{\comult}[1][black]{
-	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
-	\draw[wire] (2*\l,2*\l) -- (0,2*\l);
-	\node[cdot=#1] at (2*\l,2*\l) {};
+	\draw[wire] (4*\nlen,\nlen) -| (2*\nlen,3*\nlen) -- (4*\nlen,3*\nlen);
+	\draw[wire] (2*\nlen,2*\nlen) -- (0,2*\nlen);
+	\node[cdot=#1] at (2*\nlen,2*\nlen) {};
 }
 
 \newcommand{\counit}[1][black]{
-	\draw[wire] (0,2*\l) -- (2*\l,2*\l);
-	\node[cdot=#1] at (2*\l,2*\l) {};
+	\draw[wire] (0,2*\nlen) -- (2*\nlen,2*\nlen);
+	\node[cdot=#1] at (2*\nlen,2*\nlen) {};
 }
 
 \newcommand{\Tunit}[2][white]{ % "tagged" unit
-	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
-	\draw[wire] (2*\l,2*\l) -- ++(2*\l,0);
-	\node[tag, fill=#1] at (2*\l,2*\l) {\tiny $#2$};
+	\draw[draw=none] (0,0) rectangle (4*\nlen,4*\nlen);
+	\draw[wire] (2*\nlen,2*\nlen) -- ++(2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,2*\nlen) {\tiny $#2$};
 }
 
 %=======================================================================
@@ -169,23 +169,23 @@
 % L = Labeled
 
 \def\Did{ % identity, down
-	\draw[iden] (0,\l) -- (4*\l,\l);
+	\draw[iden] (0,\nlen) -- (4*\nlen,\nlen);
 }
 
 \def\Uid{ % identity, up
-	\draw[iden] (0,3*\l) -- (4*\l,3*\l);
+	\draw[iden] (0,3*\nlen) -- (4*\nlen,3*\nlen);
 }
 
 \newcommand{\Dmor}[2][white]{ % down morphism
-	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\draw[draw=none] (0,0) rectangle (4*\nlen,4*\nlen);
 	\Did
-	\node[tag, fill=#1] at (2*\l,\l) {\tiny $#2$};
+	\node[tag, fill=#1] at (2*\nlen,\nlen) {\tiny $#2$};
 }
 
 \newcommand{\Umor}[2][white]{ % up morphism
-	\draw[draw=none] (0,0) rectangle (4*\l,4*\l);
+	\draw[draw=none] (0,0) rectangle (4*\nlen,4*\nlen);
 	\Uid
-	\node[tag, fill=#1] at (2*\l,3*\l) {\tiny $#2$};
+	\node[tag, fill=#1] at (2*\nlen,3*\nlen) {\tiny $#2$};
 }
 
 \NewDocumentCommand{\UDmor}{O{white} m O{white} m}{ % up n down morphism
@@ -201,82 +201,82 @@
 }
 
 \newcommand{\Dcomult}[1][black]{ % comultiplication, down
-	\draw[wire] (4*\l,0) -| (2*\l,2*\l) -- (4*\l,2*\l);
-	\draw[wire] (2*\l,\l) -- (0,\l);
-	\node[cdot=#1] at (2*\l,\l) {};
+	\draw[wire] (4*\nlen,0) -| (2*\nlen,2*\nlen) -- (4*\nlen,2*\nlen);
+	\draw[wire] (2*\nlen,\nlen) -- (0,\nlen);
+	\node[cdot=#1] at (2*\nlen,\nlen) {};
 }
 
 \newcommand{\Ucomult}[1][black]{ % comultiplication, up
-	\draw[wire] (4*\l,2*\l) -| (2*\l,4*\l) -- (4*\l,4*\l);
-	\draw[wire] (2*\l,3*\l) -- (0,3*\l);
-	\node[cdot=#1] at (2*\l,3*\l) {};
+	\draw[wire] (4*\nlen,2*\nlen) -| (2*\nlen,4*\nlen) -- (4*\nlen,4*\nlen);
+	\draw[wire] (2*\nlen,3*\nlen) -- (0,3*\nlen);
+	\node[cdot=#1] at (2*\nlen,3*\nlen) {};
 }
 
 \newcommand{\Uunit}[1][black]{ % unit, up
-	\draw[wire] (4*\l,3*\l) -- (2*\l,3*\l);
-	\node[cdot=#1] at (2*\l,3*\l) {};
+	\draw[wire] (4*\nlen,3*\nlen) -- (2*\nlen,3*\nlen);
+	\node[cdot=#1] at (2*\nlen,3*\nlen) {};
 }
 
 \newcommand{\Dunit}[1][black]{ % unit, down
-	\draw[wire] (4*\l,\l) -- (2*\l,\l);
-	\node[cdot=#1] at (2*\l,\l) {};
+	\draw[wire] (4*\nlen,\nlen) -- (2*\nlen,\nlen);
+	\node[cdot=#1] at (2*\nlen,\nlen) {};
 }
 
 \newcommand{\Ucounit}[1][black]{ % counit, up
-	\draw[wire] (0,3*\l) -- (2*\l,3*\l);
-	\node[cdot=#1] at (2*\l,3*\l) {};
+	\draw[wire] (0,3*\nlen) -- (2*\nlen,3*\nlen);
+	\node[cdot=#1] at (2*\nlen,3*\nlen) {};
 }
 
 \newcommand{\Dcounit}[1][black]{ % counit, down
-	\draw[wire] (0,\l) -- (2*\l,\l);
-	\node[cdot=#1] at (2*\l,\l) {};
+	\draw[wire] (0,\nlen) -- (2*\nlen,\nlen);
+	\node[cdot=#1] at (2*\nlen,\nlen) {};
 }
 
 \newcommand{\DTunit}[2][white]{ % tagged counit, down
-	\draw[wire] (2*\l,\l) -- ++(2*\l,0);
-	\node[tag, fill=#1] at (2*\l,\l) {$#2$};
+	\draw[wire] (2*\nlen,\nlen) -- ++(2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,\nlen) {$#2$};
 }
 
 \newcommand{\UTunit}[2][white]{ % tagged counit, up
-	\draw[wire] (2*\l,3*\l) -- ++(2*\l,0);
-	\node[tag, fill=#1] at (2*\l,3*\l) {$#2$};
+	\draw[wire] (2*\nlen,3*\nlen) -- ++(2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,3*\nlen) {$#2$};
 }
 
 \newcommand{\DTcounit}[2][white]{ % tagged counit, down
-	\draw[wire] (2*\l,\l) -- ++(-2*\l,0);
-	\node[tag, fill=#1] at (2*\l,\l) {$#2$};
+	\draw[wire] (2*\nlen,\nlen) -- ++(-2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,\nlen) {$#2$};
 }
 
 \newcommand{\UTcounit}[2][white]{ % tagged counit, up
-	\draw[wire] (2*\l,3*\l) -- ++(-2*\l,0);
-	\node[tag, fill=#1] at (2*\l,3*\l) {$#2$};
+	\draw[wire] (2*\nlen,3*\nlen) -- ++(-2*\nlen,0);
+	\node[tag, fill=#1] at (2*\nlen,3*\nlen) {$#2$};
 }
 
 %=======================================================================
 % Other strings
 
 \newcommand{\Cup}{
-	\draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
+	\draw[wire] (0,\nlen) -| (2*\nlen,3*\nlen) -- (0,3*\nlen);
 }
 
 \newcommand{\Cap}{
-	\draw[wire] (4*\l,\l) -| (2*\l,3*\l) -- (4*\l,3*\l);
+	\draw[wire] (4*\nlen,\nlen) -| (2*\nlen,3*\nlen) -- (4*\nlen,3*\nlen);
 }
 
 \newcommand{\DCup}{
-	\draw[wire] (0,0) -| (2*\l,2*\l) -- (0,2*\l);
+	\draw[wire] (0,0) -| (2*\nlen,2*\nlen) -- (0,2*\nlen);
 }
 
 \newcommand{\DCap}{
-	\draw[wire] (4*\l,0) -| (2*\l,2*\l) -- (4*\l,2*\l);
+	\draw[wire] (4*\nlen,0) -| (2*\nlen,2*\nlen) -- (4*\nlen,2*\nlen);
 }
 
 \newcommand{\TCup}{
-	\draw[wire] (0,2*\l) -| (2*\l,4*\l) -- (0,4*\l);
+	\draw[wire] (0,2*\nlen) -| (2*\nlen,4*\nlen) -- (0,4*\nlen);
 }
 
 \newcommand{\TCap}{
-	\draw[wire] (4*\l,2*\l) -| (2*\l,4*\l) -- (4*\l,4*\l);
+	\draw[wire] (4*\nlen,2*\nlen) -| (2*\nlen,4*\nlen) -- (4*\nlen,4*\nlen);
 }
 
 %=======================================================================
@@ -310,13 +310,13 @@
 
 % \def\multi#1{
 % % \foreach \i in {0,1,2,3}{
-% % \draw[wire] (0,\l/2+\i*\l) -- ++(\l,0);}
-% \draw[wire] (0,5*\l) -| (2*\l,7*\l) -- (0,7*\l);
-% \draw[wire] (0,\l) -| (2*\l,3*\l) -- (0,3*\l);
-% \ezs{\draw[wire] (3*\l,2*\l) -- ++(\l,0);
-% \draw[fill=white, thin] (\l,\l-.15) rectangle (3*\l,3*\l+.15) node[pos=.5,] {$\scriptscriptstyle #1$};}{yscale=2}
+% % \draw[wire] (0,\nlen/2+\i*\nlen) -- ++(\nlen,0);}
+% \draw[wire] (0,5*\nlen) -| (2*\nlen,7*\nlen) -- (0,7*\nlen);
+% \draw[wire] (0,\nlen) -| (2*\nlen,3*\nlen) -- (0,3*\nlen);
+% \ezs{\draw[wire] (3*\nlen,2*\nlen) -- ++(\nlen,0);
+% \draw[fill=white, thin] (\nlen,\nlen-.15) rectangle (3*\nlen,3*\nlen+.15) node[pos=.5,] {$\scriptscriptstyle #1$};}{yscale=2}
 % }
 
 % \def\theR{\ucounit
-% \lcounit
-% \draw[fill=white] (\l,\l-.1) rectangle (3*\l,3*\l+.1) node[box] {\tiny $R$};}
+% \nlencounit
+% \draw[fill=white] (\nlen,\nlen-.1) rectangle (3*\nlen,3*\nlen+.1) node[box] {\tiny $R$};}
