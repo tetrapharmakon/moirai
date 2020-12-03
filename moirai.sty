@@ -25,7 +25,8 @@
 	, wdot/.style={draw,fill=white, circle, inner sep=1pt}
 	, cdot/.style={draw,fill=#1, circle, inner sep=1pt}
   , box/.style={pos=.5,font=\tiny}
-  , tag/.style={draw, inner sep=1.5pt}
+	, tag/.style={draw, inner sep=1.5pt}
+	, wtag/.style={fill=white,tag, font=\tiny}
   , baseline=(current bounding box.center)
 }
 
@@ -53,11 +54,11 @@
 \newcommand{\rLabel}[2]{\node[right] at (#2,2*\nlen) {$\quad = #1$};}
 
 \newcommand{\gau}[1]{ % à gauche
-\node[left] at (0,2*\nlen) {\tiny $#1$};
+\node[left, font=\tiny] at (0,2*\nlen) {#1};
 }
 
 \newcommand{\dro}[1]{ % à droite
-\node[right] at (1,2*\nlen) {\tiny $#1$};
+\node[right, font=\tiny] at (1,2*\nlen) {#1};
 }
 
 \newcommand{\eql}[1]{ % egalité

@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\usepackage{moirai}
+
+\usepackage[all]{xy}
+\tikzset{>=stealth}
+
+
+\begin{document}
+\begin{tikzpicture}[yscale=.75]
+  \draw[line width=2mm, gray!40] 
+    (0,2*\nlen) -- (4*\nlen,2*\nlen);
+  \node[wtag] 
+    at (2*\nlen, 2*\nlen) {$f$};
+  \up[2]{
+    \braid\node[wtag] at (2*\nlen,2*\nlen) {$\Sigma$};
+  }
+  \down[2]{
+    \braid\node[wtag] at (2*\nlen,2*\nlen) {$\Xi$};
+  }
+  \step[-.25]{\up[2.5]{\dro{$\vdots$}}}
+  \step[.25]{\down[1.5]{\gau{$\vdots$}}}
+\end{tikzpicture}
+\end{document}
