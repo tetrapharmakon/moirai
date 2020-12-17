@@ -78,8 +78,8 @@
 
 % Akasa (Sanskrit आकाश) is a term for the empty space or æther pervading 
 % the cosmos.
-\def\akasa{
-	\draw[densely dotted] (0,0) rectangle (4*\nlen,4*\nlen);
+\newcommand{\akasa}[1][]{
+	\draw[densely dotted] (0,0) rectangle (4*\nlen,4*\nlen) node[gray!40,pos=.5,font=\tiny] {$#1$};
 }
 
 \def\braid{
