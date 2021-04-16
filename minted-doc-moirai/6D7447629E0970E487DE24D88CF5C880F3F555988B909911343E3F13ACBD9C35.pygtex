@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}[xshift=0.25cm]
+    \PYGZlt{}shape\PYGZgt{}
+  \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}tikzpicture\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}step}\PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}up}\PYG{n+na}{[4]}\PYG{n+nb}{\PYGZob{}}
+      \PYG{k}{\PYGZbs{}mor}\PYG{n+na}{[red!80]}\PYG{n+nb}{\PYGZob{}}s\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}step}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}comult}\PYG{n+na}{[red]}
+        \PYG{k}{\PYGZbs{}step\PYGZbs{}braid}\PYG{n+nb}{\PYGZcb{}}
+    \PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}mor}\PYG{n+na}{[red!20]}\PYG{n+nb}{\PYGZob{}}r\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}step}\PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}comult}
+      \PYG{k}{\PYGZbs{}step}\PYG{n+nb}{\PYGZob{}}
+      \PYG{k}{\PYGZbs{}UDmor}\PYG{n+na}{[green!25]}\PYG{n+nb}{\PYGZob{}}g\PYG{n+nb}{\PYGZcb{}}[yellow!70!black]\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}Delta}\PYG{n+nb}{\PYGZcb{}}
+        \PYG{k}{\PYGZbs{}step}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}Dmor}\PYG{n+nb}{\PYGZob{}}h\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+      \PYG{n+nb}{\PYGZcb{}}
+    \PYG{n+nb}{\PYGZcb{}}
+  \PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}up}\PYG{n+na}{[2]}\PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}step}\PYG{n+na}{[4]}\PYG{n+nb}{\PYGZob{}}
+      \PYG{k}{\PYGZbs{}braid\PYGZbs{}up}\PYG{n+na}{[3]}\PYG{k}{\PYGZbs{}id}
+    \PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}step}\PYG{n+na}{[5]}\PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}mult}\PYG{n+na}{[blue!50]}\PYG{k}{\PYGZbs{}up}\PYG{n+na}{[4]}\PYG{k}{\PYGZbs{}mult}
+  \PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}tikzpicture\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

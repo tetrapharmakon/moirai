@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}up}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}[yshift=0.25cm]
+  \PYGZlt{}shape\PYGZgt{}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}
+\PYG{c}{\PYGZpc{}===============================}
+\PYG{c}{\PYGZpc{}up}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}[yshift=\PYGZhy{}0.25cm]
+  \PYGZlt{}shape\PYGZgt{}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}scope\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}
